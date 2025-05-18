@@ -26,7 +26,28 @@ def extract_text_from_image(image: Image.Image):
                 "role": "user",
                 "content": [
                     {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{image_base64}"}},
-                    {"type": "text", "text": "Hãy trích xuất toàn bộ chữ viết tay trong ảnh, giữ nguyên dấu câu, giữ dấu của từng chữ, khoảng cách dòng, và chính tả như trong ảnh."}
+                    {"type": "text", "text": """
+                    Ekstrak semua tulisan tangan dalam gambar, lalu ubah ke format JSON seperti di bawah ini:
+
+                    [
+                    {
+                        "nama": "Nama siswa",
+                        "jawaban_essay": [
+                        {
+                            "soal": "Isi soal lengkap",
+                            "jawaban": "Isi jawaban lengkap"
+                        }
+                        ]
+                    }
+                    ]
+
+                    Catatan:
+                    - Ambil 'Nama' dari tulisan jika ada (misal: 'Nama: Febri Aulia Putri').
+                    - Soal biasanya ditandai dengan angka seperti 1., 2., dan diikuti jawaban.
+                    - Gabungkan jawaban meskipun ditulis dalam beberapa baris atau paragraf.
+                    - Jangan ubah isi teks, hanya format JSON-nya yang perlu diubah.
+                    """}
+                    # Hãy trích xuất toàn bộ chữ viết tay trong ảnh, giữ nguyên dấu câu, giữ dấu của từng chữ, khoảng cách dòng, và chính tả như trong ảnh.
                 ]
             }
         ]
