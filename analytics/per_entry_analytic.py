@@ -6,9 +6,8 @@ def load_json_file(path):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-# Ganti dengan path file JSON yang kamu punya
-ocr_data_path = "data/ocr_results.json"
-ground_truth_path = "data/ground_truth.json"
+ocr_data_path = "data/ocr-data/ocr_results.json"
+ground_truth_path = "data/ocr-data/ground_truth.json"
 
 ocr_data = load_json_file(ocr_data_path)
 ground_truth = load_json_file(ground_truth_path)
