@@ -17,6 +17,8 @@ for ocr, gt in zip(ocr_data, ground_truth):
     ocr_texts = []
     gt_texts = []
 
+    ocr_texts.append(ocr['nama'])
+    gt_texts.append(gt['nama'])
     for o_j, g_j in zip(ocr['jawaban_essay'], gt['jawaban_essay']):
         ocr_texts.append(o_j['soal'])
         ocr_texts.append(o_j['jawaban'])
@@ -29,7 +31,7 @@ for ocr, gt in zip(ocr_data, ground_truth):
     entry_wer = wer(joined_gt, joined_ocr)
     entry_cer = cer(joined_gt, joined_ocr)
 
-    print(f"Nama            : {ocr['nama']}")
+    print(f"Nama            : ocr: {ocr['nama']} | real: {gt['nama']}")
     print(f"WER             : {entry_wer:.2%}")
     print(f"CER             : {entry_cer:.2%}")
     print(f"WER Accuracy    : {(1 - entry_wer) * 100:.2f}%")
@@ -40,6 +42,7 @@ for ocr, gt in zip(ocr_data, ground_truth):
 def extract_all_text(data):
     texts = []
     for entry in data:
+        texts.append(entry["nama"])
         for item in entry["jawaban_essay"]:
             texts.append(item["soal"])
             texts.append(item["jawaban"])
