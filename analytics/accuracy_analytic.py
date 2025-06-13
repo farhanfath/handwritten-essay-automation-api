@@ -14,6 +14,7 @@ ground_truth = load_json_file(ground_truth_path)
 def extract_all_text(data):
     texts = []
     for entry in data:
+        texts.append(entry["nama"])
         for item in entry["jawaban_essay"]:
             texts.append(item["soal"])
             texts.append(item["jawaban"])
