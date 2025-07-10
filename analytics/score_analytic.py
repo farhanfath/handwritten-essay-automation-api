@@ -4,18 +4,6 @@ def load_json(filename):
     with open(filename, 'r') as f:
         return json.load(f)
 
-# def calculate_mae_percentage(predicted_list, ground_truth_list):
-#     errors_percent = []
-#     for pred, true in zip(predicted_list, ground_truth_list):
-#         true_score = true['skor_akhir']
-#         pred_score = pred['skor_akhir']
-#         if true_score == 0:
-#             continue  # skip if ground truth is 0 to avoid division by zero
-#         error_pct = abs(pred_score - true_score) / true_score * 100
-#         errors_percent.append(error_pct)
-#     mae_pct = sum(errors_percent) / len(errors_percent) if errors_percent else 0
-#     accuracy_pct = 100 - mae_pct
-#     return mae_pct, accuracy_pct
 def calculate_mae_percentage(predicted_list, ground_truth_list, label=""):
     errors_percent = []
 
